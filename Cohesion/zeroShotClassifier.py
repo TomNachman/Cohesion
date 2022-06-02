@@ -10,7 +10,7 @@ class ZeroShotClassifier:
         self.df_docs_topics = pd.read_pickle(path_df_docs_topics)
         self.dic_topic_id_to_name = topic_ind_to_name_pkl_to_dict(path_dic_topic_id_to_name)
         self.classifier = pipeline("zero-shot-classification",
-                                   model=self.model_name, device=0)
+                                   model=self.model_name)
         self.docs, self.series_topics = self.get_topics_and_docs_filtered()
 
     def get_topics_and_docs_filtered(self):

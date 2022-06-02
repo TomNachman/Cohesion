@@ -41,9 +41,10 @@ def calculate_coherence_score(ground_truth_list, topics_names):
 def calculate_cohesion_score(ground_truth_list, topics, topics_names):
     # prepare pickles files
     # print('prepare pickles files...')
-    path_to_save = os.getcwd() + '/Datasets/exports/mnli/doc_topic_mnli_results'
-    topic_id_content = os.getcwd() + '/Datasets/exports/topics_map/topic_id_content.pkl'
-    topic_id_value_map = os.getcwd() + '/Datasets/exports/topics_map/topic_id_topic_value_map.pkl'
+    # TODO create dir called CohesionDatasets
+    path_to_save = os.getcwd() + '\\Datasets\\doc_topic_mnli_results'
+    topic_id_content = os.getcwd() + '\\Datasets\\topic_id_content.pkl'
+    topic_id_value_map = os.getcwd() + '\\Datasets\\topic_id_topic_value_map.pkl'
 
     clusters_docs = docs_to_groups(ground_truth_list, topics)
     create_input_to_mnli_topics_content(clusters_docs, topic_id_content)

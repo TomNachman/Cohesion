@@ -116,14 +116,17 @@ def create_topic_name(key, labels_array):
     return topic_name
 
 
-def create_topic_names_using_tf_idf(docs, labels):
+def create_topic_names_using_tf_idf(docs, labels, is_synonym_enhanced=False, use_glove_reduction=False):
     tf_idf_labels, tf_idf_labels_synonyms, tf_idf_labels_glove = dict(), dict(), dict()
+    labels_array_synonyms, labels_array_for_glove = [], []
     docs_groups = docs_to_clusters(docs, labels)
     for key, value in docs_groups.items():
         labels_array = tf_idf_top_words(value)
-        labels_array_synonyms = use_synonyms(labels_array)
-        labels_array_for_glove = copy.deepcopy(labels_array)
-        remove_nonsimilar_from_topic(labels_array_for_glove)
+        if is_synonym_enhanced:
+            labels_array_synonyms = use_synonyms(labels_array)
+        if use_glove_reduction:
+            labels_array_for_glove = copy.deepcopy(labels_array)
+            remove_nonsimilar_from_topic(labels_array_for_glove)
 
         tf_idf_labels[key] = create_topic_name(key, labels_array)
         tf_idf_labels_synonyms[key] = create_topic_name(key, labels_array_synonyms)
@@ -147,7 +150,7 @@ def create_random_division(ground_truth_df, random_percent):
     return labels
 
 
-def random_division(ground_truth_df, random_percent):
+def random_division(ground_truth_df, random_percent=0):
     new_division_labels = create_random_division(ground_truth_df, random_percent=random_percent)
     topics, topics_synonyms, topics_glove = create_topic_names_using_tf_idf(ground_truth_df['text'].tolist(),
                                                                             new_division_labels)
@@ -158,11 +161,10 @@ def read_data_from_csv(path_to_csv):
     ground_truth_df = pd.read_csv(path_to_csv, sep='\t',
                                   usecols=['label', 'text'])
     # prepare data
-    ground_truth_df_all = ground_truth_df['text'].tolist()
-    ground_truth_df = ground_truth_df[ground_truth_df['label'].between(20, 40)]
+    ground_truth_df = ground_truth_df[ground_truth_df['label'].between(20, 30)]
     ground_truth_list = ground_truth_df['text'].tolist()
     ground_truth_label_list = ground_truth_df['label'].tolist()
-    return ground_truth_df_all, ground_truth_list, ground_truth_label_list, ground_truth_df
+    return ground_truth_list, ground_truth_label_list
 
 def read_glove_model(glove_model_path):
     with open(glove_model_path, 'r') as f:
