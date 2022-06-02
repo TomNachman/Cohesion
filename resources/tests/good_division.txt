@@ -1,0 +1,7 @@
+text	label
+the dog bark on another dog without leash	1
+corona vaccine health 	2
+two dogs in the central park 	1
+cancer mortality healthy	2
+the dog fight with the cats in the street	1
+healthcare in united state is shit	2

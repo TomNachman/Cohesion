@@ -3,14 +3,14 @@ from transformers import pipeline
 import numpy as np
 import random
 
+
 class ZeroShotClassifier:
     def __init__(self, path_dic_topic_id_to_name, path_df_docs_topics):
         self.model_name = "digitalepidemiologylab/covid-twitter-bert-v2-mnli"
         self.model_name_saveable = "covid-twitter-bert-v2-mnli"
         self.df_docs_topics = pd.read_pickle(path_df_docs_topics)
         self.dic_topic_id_to_name = topic_ind_to_name_pkl_to_dict(path_dic_topic_id_to_name)
-        self.classifier = pipeline("zero-shot-classification",
-                                   model=self.model_name)
+        self.classifier = pipeline("zero-shot-classification", model=self.model_name)
         self.docs, self.series_topics = self.get_topics_and_docs_filtered()
 
     def get_topics_and_docs_filtered(self):
@@ -65,7 +65,7 @@ class ZeroShotClassifier:
         # TODO: eden change indexes to test to real doc index
         num_of_docs = len(self.docs)
         print('num_of_docs: ', num_of_docs)
-        indexes_to_test_before_validation = [i for i in range(0, num_of_docs, num_of_docs // 100)]
+        indexes_to_test_before_validation = [i for i in range(0, num_of_docs, 1)]
         docs_sample = []
         indexes_to_test = []
         for ind in indexes_to_test_before_validation:
