@@ -89,7 +89,8 @@ def calculate_topics_cohesion(topics_with_scores):
         positive += topic_data['positive']
         negative += topic_data['negative']
     # print('positive: ' + str(positive/(index + 1)) + ', negative: ' + str(negative/(index + 1)))
-    return (positive / (len(topics_with_scores) + 1)) - (negative / (len(topics_with_scores) + 1))
+    score = (positive / (len(topics_with_scores) + 1)) - (negative / (len(topics_with_scores) + 1))
+    return (score + 1)/2
 
 
 def main_calculate_cohesion(path):

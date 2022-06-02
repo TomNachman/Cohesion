@@ -7,7 +7,9 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from scipy.spatial.distance import euclidean
 from sklearn.feature_extraction.text import TfidfVectorizer
-
+# import nltk
+# nltk.download('stopwords')
+# nltk.download('punkt')
 stop_words = set(stopwords.words('english'))
 glove = False
 emmbed_glove_dict = {}
@@ -73,7 +75,7 @@ def tf_idf_top_words(docs: list):
     # place tf-idf values in a pandas data frame
     df = pd.DataFrame(first_vector_tfidfvectorizer.T.todense(), index=feature_names, columns=["tfidf"])
     df = df.sort_values(by=["tfidf"], ascending=False)
-    return df.index.values.tolist()[0:3]
+    return df.index.values.tolist()[0:5]
 
 
 def use_synonyms(labels_array):
@@ -158,13 +160,13 @@ def random_division(ground_truth_df, random_percent=0):
 
 
 def read_data_from_csv(path_to_csv):
-    ground_truth_df = pd.read_csv(path_to_csv, sep='\t',
-                                  usecols=['label', 'text'])
+    ground_truth_df = pd.read_csv(path_to_csv, sep='\t', usecols=['label', 'text'])
+
     # prepare data
-    ground_truth_df = ground_truth_df[ground_truth_df['label'].between(20, 30)]
     ground_truth_list = ground_truth_df['text'].tolist()
     ground_truth_label_list = ground_truth_df['label'].tolist()
     return ground_truth_list, ground_truth_label_list
+
 
 def read_glove_model(glove_model_path):
     with open(glove_model_path, 'r') as f:

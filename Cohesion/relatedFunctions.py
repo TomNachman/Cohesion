@@ -1,11 +1,11 @@
 from sklearn.metrics import normalized_mutual_info_score
-from Cohesion.cohesionFormula import main_calculate_cohesion
+from Cohesion.Cohesion.cohesionFormula import main_calculate_cohesion
 import os
-from Cohesion.utils import tokenizer, docs_to_groups, create_input_to_mnli_topics_content, create_topic_id_topic_value
+from Cohesion.Cohesion.utils import tokenizer, docs_to_groups, create_input_to_mnli_topics_content, create_topic_id_topic_value
 from gensim.corpora import Dictionary
 from gensim.models import CoherenceModel
 
-from Cohesion.zeroShotClassifier import ZeroShotClassifier
+from Cohesion.Cohesion.zeroShotClassifier import ZeroShotClassifier
 
 
 def get_coherence(docs_list: list, topics_names: list):
@@ -42,9 +42,9 @@ def calculate_cohesion_score(ground_truth_list, topics, topics_names):
     # prepare pickles files
     # print('prepare pickles files...')
     # TODO create dir called CohesionDatasets
-    path_to_save = os.getcwd() + '\\Datasets\\doc_topic_mnli_results'
-    topic_id_content = os.getcwd() + '\\Datasets\\topic_id_content.pkl'
-    topic_id_value_map = os.getcwd() + '\\Datasets\\topic_id_topic_value_map.pkl'
+    path_to_save = os.getcwd() + '\\CohesionDatasets\\doc_topic_mnli_results'
+    topic_id_content = os.getcwd() + '\\CohesionDatasets\\topic_id_content.pkl'
+    topic_id_value_map = os.getcwd() + '\\CohesionDatasets\\topic_id_topic_value_map.pkl'
 
     clusters_docs = docs_to_groups(ground_truth_list, topics)
     create_input_to_mnli_topics_content(clusters_docs, topic_id_content)
