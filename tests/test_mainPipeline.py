@@ -1,5 +1,5 @@
 from unittest import TestCase
-from Cohesion import mainPipeline
+from CohesionPipeLine.Cohesion import mainPipeline
 
 class Test(TestCase):
     def test_calculate_cohesion_score(self):

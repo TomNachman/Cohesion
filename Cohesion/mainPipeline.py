@@ -1,5 +1,5 @@
-from relatedFunctions import extract_topics_labels, calculate_cohesion_score
-from utils import read_data_from_csv, create_topic_names_using_tf_idf
+from CohesionPipeLine.Cohesion.relatedFunctions import extract_topics_labels, calculate_cohesion_score
+from CohesionPipeLine.Cohesion.utils import read_data_from_csv, create_topic_names_using_tf_idf
 import os
 
 correlation_dict = {}
