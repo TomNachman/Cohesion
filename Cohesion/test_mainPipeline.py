@@ -1,12 +1,15 @@
 from unittest import TestCase
-
-import Cohesion.Cohesion.mainPipeline
+import Cohesion.mainPipeline
 
 
 class Test(TestCase):
     def test_calculate_cohesion_score(self):
-        bad_score, bad_topics = Cohesion.Cohesion.mainPipeline.cohesion_score('/resources/tests/bad_division.txt')
-        good_score, good_topics = Cohesion.Cohesion.mainPipeline.cohesion_score('/resources/tests/good_division.txt')
+        # Give here full path!
+        bad_score, bad_topics = Cohesion.mainPipeline.cohesion_score(r'C:\Users\nachm\Documents\University\Year4'
+                                                                     r'\CohesionPack\resources\tests\bad_division.txt')
+        good_score, good_topics = Cohesion.mainPipeline.cohesion_score(r'C:\Users\nachm\Documents\University\Year4'
+                                                                       r'\CohesionPack\resources\tests\good_division'
+                                                                       r'.txt')
         print('bad_score: ', bad_score)
         print('bad_topics: ', bad_topics)
 

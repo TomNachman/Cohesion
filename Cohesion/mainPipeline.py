@@ -1,5 +1,5 @@
-from Cohesion.Cohesion.relatedFunctions import extract_topics_labels, calculate_cohesion_score
-from Cohesion.Cohesion.utils import read_data_from_csv, create_topic_names_using_tf_idf
+from Cohesion.relatedFunctions import extract_topics_labels, calculate_cohesion_score
+from Cohesion.utils import read_data_from_csv, create_topic_names_using_tf_idf
 import os
 
 correlation_dict = {}
@@ -9,7 +9,6 @@ passed, failed = 0, 0
 
 
 def cohesion_score(path):
-    path = os.getcwd() + '/..' + path
     ground_truth_list, ground_truth_label_list = read_data_from_csv(path_to_csv=path)
     print('----------- Starting main pipeline -------------')
     print('There are {} docs in path_to_csv the dataset'.format(len(ground_truth_label_list)))

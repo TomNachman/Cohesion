@@ -1,4 +1,5 @@
 import copy
+import os.path
 import random
 import pandas as pd
 import numpy as np
@@ -160,6 +161,8 @@ def random_division(ground_truth_df, random_percent=0):
 
 
 def read_data_from_csv(path_to_csv):
+    if not os.path.exists(path_to_csv):
+        raise Exception(f'file not exists : {path_to_csv}')
     ground_truth_df = pd.read_csv(path_to_csv, sep='\t', usecols=['label', 'text'])
 
     # prepare data
