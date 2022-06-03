@@ -5,7 +5,7 @@ from utils import tokenizer, docs_to_groups, create_input_to_mnli_topics_content
 from gensim.corpora import Dictionary
 from gensim.models import CoherenceModel
 
-from Cohesion.Cohesion.zeroShotClassifier import ZeroShotClassifier
+from zeroShotClassifier import ZeroShotClassifier
 
 
 def get_coherence(docs_list: list, topics_names: list):
