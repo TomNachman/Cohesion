@@ -1,7 +1,7 @@
 from sklearn.metrics import normalized_mutual_info_score
-from Cohesion.Cohesion.cohesionFormula import main_calculate_cohesion
+from cohesionFormula import main_calculate_cohesion
 import os
-from Cohesion.Cohesion.utils import tokenizer, docs_to_groups, create_input_to_mnli_topics_content, create_topic_id_topic_value
+from utils import tokenizer, docs_to_groups, create_input_to_mnli_topics_content, create_topic_id_topic_value
 from gensim.corpora import Dictionary
 from gensim.models import CoherenceModel
 
