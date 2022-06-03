@@ -1,11 +1,11 @@
 from sklearn.metrics import normalized_mutual_info_score
-from Cohesion.cohesionFormula import main_calculate_cohesion
+from Cohesion.Cohesion.cohesionFormula import main_calculate_cohesion
 import os
-from Cohesion.utils import tokenizer, docs_to_groups, create_input_to_mnli_topics_content, create_topic_id_topic_value
+from Cohesion.Cohesion.utils import tokenizer, docs_to_groups, create_input_to_mnli_topics_content, create_topic_id_topic_value
 from gensim.corpora import Dictionary
 from gensim.models import CoherenceModel
 
-from Cohesion.zeroShotClassifier import ZeroShotClassifier
+from Cohesion.Cohesion.zeroShotClassifier import ZeroShotClassifier
 
 
 def get_coherence(docs_list: list, topics_names: list):
