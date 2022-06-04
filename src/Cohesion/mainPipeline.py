@@ -1,6 +1,5 @@
-from CohesionPipeLine.Cohesion.relatedFunctions import extract_topics_labels, calculate_cohesion_score
-from CohesionPipeLine.Cohesion.utils import read_data_from_csv, create_topic_names_using_tf_idf
-import os
+from .relatedFunctions import extract_topics_labels, calculate_cohesion_score
+from .utils import read_data_from_csv, create_topic_names_using_tf_idf
 
 correlation_dict = {}
 error_precentage = []
@@ -17,3 +16,7 @@ def cohesion_score(path):
     cohesion_score = calculate_cohesion_score(ground_truth_list=ground_truth_list, topics=ground_truth_label_list,
                                               topics_names=topics_names)
     return cohesion_score, topics_names
+
+
+def add_one(num: int):
+    return num + 1
